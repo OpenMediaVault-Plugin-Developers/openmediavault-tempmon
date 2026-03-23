@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+case "$1" in
+    configure)
+        # Initialize configuration database first so salt can read settings.
+        echo "Updating configuration database ..."
+        omv-confdbadm create "conf.service.tempmon"
+
+        # Deploy collectd and rrdcached configurations on fresh install.
+        echo "Deploy collectd and rrdcached configurations ..."
+        omv-salt deploy run --no-color --quiet rrdcached collectd || :
+
+        # generate graphs only if performance monitoring is enabled
+        if [ "$(omv_config_get "/config/system/monitoring/perfstats/enable")" = "1" ]; then
+            echo "Generating graphs ..."
+            omv-mkrrdgraph || :
+        fi
+
+        # Activate package triggers.
+        dpkg-trigger update-workbench
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,12 @@
+version: "1.0"
+type: "component"
+data:
+  name: "omv-diagnostics-performance-statistics-tempmon-rrd-page"
+  type: "rrdPage"
+  config:
+    graphs:
+{%- for s in chart_sensors %}
+{%- set uuid8 = (s.uuid | replace('-', ''))[:8] %}
+      - name: "exec-tempmon-{{ uuid8 }}"
+        label: "{{ s.name | replace('"', '\\"') }}"
+{%- endfor %}

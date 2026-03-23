@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+remove_action() {
+    dpkg-trigger update-workbench
+}
+
+case "$1" in
+    purge)
+        remove_action
+        # Remove generated configuration, scripts, and workbench files.
+        rm -f /etc/openmediavault/tempmon.conf
+        rm -f /etc/collectd/collectd.conf.d/tempmon.conf
+        rm -f /usr/share/openmediavault/workbench/dashboard.d/tempmon-widget-*.yaml
+        rm -f /usr/share/openmediavault/workbench/component.d/omv-diagnostics-performance-statistics-tempmon-rrd-page.yaml
+        rm -f /usr/share/openmediavault/workbench/route.d/diagnostics.performance-statistics.tempmon.yaml
+        rm -f /usr/share/openmediavault/workbench/navigation.d/diagnostics.performance-statistics.tempmon.yaml
+        if omv_config_exists "/config/services/tempmon"; then
+            omv_config_delete "/config/services/tempmon"
+        fi
+    ;;
+
+    remove)
+        remove_action
+    ;;
+
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

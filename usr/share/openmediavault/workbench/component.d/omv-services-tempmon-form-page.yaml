@@ -1,0 +1,66 @@
+version: "1.0"
+type: component
+data:
+  name: omv-services-tempmon-form-page
+  type: formPage
+  config:
+    request:
+      service: TempMon
+      get:
+        method: getSensor
+        params:
+          uuid: "{{ _routeParams.uuid }}"
+      post:
+        method: setSensor
+    fields:
+      - type: confObjUuid
+      - type: textInput
+        name: name
+        label: _("Name")
+        hint: _("Label shown on the dashboard widget and performance chart.")
+        value: ""
+        disabled: "{{ _routeConfig.data.editing | toboolean }}"
+        validators:
+          required: true
+      - type: textInput
+        name: scriptpath
+        label: _("Script path")
+        hint: _("Path where the temperature script will be written. Example - /usr/sbin/cputemp1")
+        value: ""
+        validators:
+          required: true
+      - type: codeEditor
+        name: script
+        label: _("Script")
+        hint: _("Must output a raw numeric value. Divide by the divisor below to get degrees Celsius.")
+        value: ""
+        language: shell
+        validators:
+          required: true
+      - type: numberInput
+        name: divisor
+        label: _("Divisor")
+        hint: _("Divide raw output by this value to get degrees Celsius. Use 1000 for millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius.")
+        value: 1000
+        validators:
+          required: true
+          min: 1
+      - type: checkbox
+        name: widget
+        label: _("Dashboard widget")
+        hint: _("Show a gauge widget on the dashboard.")
+        value: true
+      - type: checkbox
+        name: chart
+        label: _("Performance chart")
+        hint: _("Include in the performance statistics page.")
+        value: true
+    buttons:
+      - template: submit
+        execute:
+          type: url
+          url: "/services/tempmon"
+      - template: cancel
+        execute:
+          type: url
+          url: "/services/tempmon"

@@ -1,0 +1,26 @@
+version: "1.0"
+type: dashboard-widget
+data:
+  id: {{ sensor.uuid }}
+  permissions:
+    role:
+      - admin
+      - user
+  title: "{{ sensor.name | replace('"', '\\"') }}"
+  type: chart
+  chart:
+    type: gauge
+    maxHeight: "150px"
+    min: 0
+    max: 100
+    displayValue: true
+    request:
+      service: TempMon
+      method: getAll
+    label:
+      formatter: template
+      formatterConfig: "{% raw %}{{ value | tofixed(1) }} C{% endraw %}"
+    dataConfig:
+      - label: "Temp"
+        prop: "{{ sensor.uuid }}"
+        backgroundColor: "{{ color }}"

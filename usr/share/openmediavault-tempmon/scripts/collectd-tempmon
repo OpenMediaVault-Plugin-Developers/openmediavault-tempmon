@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# Copyright (C) 2022-2026 openmediavault plugin developers
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Collectd exec plugin script for CPU temperature monitoring.
+# Reads sensor list from /etc/openmediavault/tempmon.conf and outputs
+# data in collectd PUTVAL format.
+
+HOSTNAME="${COLLECTD_HOSTNAME:-localhost}"
+INTERVAL="${COLLECTD_INTERVAL:-60}"
+
+CONF="/etc/openmediavault/tempmon.conf"
+
+if [ ! -r "$CONF" ]; then
+    exit 0
+fi
+
+. "$CONF"
+
+emit_temp() {
+    INSTANCE="$1"
+    SCRIPT="$2"
+    DIV="$3"
+
+    [ -x "$SCRIPT" ] || return
+    [ "$DIV" = "0" ] && DIV=1
+
+    TEMP_RAW=$("$SCRIPT" 2>/dev/null | head -1 | tr -d '[:space:]')
+    if [ -n "$TEMP_RAW" ]; then
+        VALUE=$(awk "BEGIN {printf \"%.3f\", $TEMP_RAW / $DIV}" 2>/dev/null)
+        if [ -n "$VALUE" ]; then
+            echo "PUTVAL \"$HOSTNAME/$INSTANCE/temperature-value\" interval=$INTERVAL N:$VALUE"
+        fi
+    fi
+}
+
+while true; do
+    i=0
+    while [ "$i" -lt "${SENSOR_COUNT:-0}" ]; do
+        eval "INSTANCE=\${SENSOR_${i}_INSTANCE}"
+        eval "SCRIPTPATH=\${SENSOR_${i}_SCRIPTPATH}"
+        eval "DIVISOR=\${SENSOR_${i}_DIVISOR}"
+        emit_temp "$INSTANCE" "$SCRIPTPATH" "$DIVISOR"
+        i=$((i + 1))
+    done
+    sleep "$INTERVAL"
+done

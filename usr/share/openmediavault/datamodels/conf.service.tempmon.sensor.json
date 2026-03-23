@@ -1,0 +1,41 @@
+{
+	"type": "config",
+	"id": "conf.service.tempmon.sensor",
+	"title": "Temp Monitor Sensor",
+	"queryinfo": {
+		"xpath": ".//services/tempmon/sensors/sensor",
+		"iterable": true,
+		"idproperty": "uuid"
+	},
+	"properties": {
+		"uuid": {
+			"type": "string",
+			"format": "uuidv4"
+		},
+		"name": {
+			"type": "string",
+			"default": "Sensor"
+		},
+		"script": {
+			"type": "string",
+			"default": "#!/bin/sh\ncat /sys/devices/virtual/thermal/thermal_zone0/temp"
+		},
+		"scriptpath": {
+			"type": "string",
+			"default": "/usr/sbin/tempmon"
+		},
+		"divisor": {
+			"type": "integer",
+			"minimum": 1,
+			"default": 1000
+		},
+		"widget": {
+			"type": "boolean",
+			"default": true
+		},
+		"chart": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

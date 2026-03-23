@@ -1,0 +1,6 @@
+version: "1.0"
+type: route
+data:
+  url: "/services/tempmon"
+  title: _("Temp Monitor")
+  component: omv-services-tempmon-datatable-page

@@ -1,0 +1,50 @@
+[{
+	"type": "rpc",
+	"id": "rpc.tempmon.setSensor",
+	"params": {
+		"type": "object",
+		"properties": {
+			"uuid": {
+				"type": "string"
+			},
+			"name": {
+				"type": "string",
+				"required": true
+			},
+			"script": {
+				"type": "string",
+				"required": true
+			},
+			"scriptpath": {
+				"type": "string",
+				"required": true
+			},
+			"divisor": {
+				"type": "integer",
+				"minimum": 1,
+				"required": true
+			},
+			"widget": {
+				"type": "boolean",
+				"required": true
+			},
+			"chart": {
+				"type": "boolean",
+				"required": true
+			}
+		}
+	}
+}, {
+	"type": "rpc",
+	"id": "rpc.tempmon.deleteSensor",
+	"params": {
+		"type": "object",
+		"properties": {
+			"uuid": {
+				"type": "string",
+				"format": "uuidv4",
+				"required": true
+			}
+		}
+	}
+}]

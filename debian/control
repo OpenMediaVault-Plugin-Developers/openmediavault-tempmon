@@ -1,0 +1,14 @@
+Source: openmediavault-tempmon
+Section: net
+XB-Plugin-Section: filesystems
+Priority: optional
+Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
+Build-Depends: debhelper-compat (= 14), dh-sequence-single-binary
+Standards-Version: 4.7.2
+Homepage: http://omv-extras.org/
+
+Package: openmediavault-tempmon
+Architecture: all
+Depends: openmediavault (>= 8),
+         ${misc:Depends}
+Description: temperature monitoring plugin for openmediavault

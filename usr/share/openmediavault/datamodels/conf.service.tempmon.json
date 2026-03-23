@@ -1,0 +1,10 @@
+{
+	"type": "config",
+	"id": "conf.service.tempmon",
+	"title": "Temp Monitor",
+	"queryinfo": {
+		"xpath": ".//services/tempmon",
+		"iterable": false
+	},
+	"properties": {}
+}

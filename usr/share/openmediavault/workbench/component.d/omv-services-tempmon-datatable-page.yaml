@@ -1,0 +1,67 @@
+version: "1.0"
+type: component
+data:
+  name: omv-services-tempmon-datatable-page
+  type: datatablePage
+  config:
+    autoReload: false
+    hasSearchField: true
+    stateId: 9e3b9c98-2708-11f1-af32-525400be629f
+    store:
+      proxy:
+        service: TempMon
+        get:
+          method: getSensorsList
+    columns:
+      - name: _("Name")
+        prop: name
+        flexGrow: 2
+        sortable: true
+      - name: _("Widget")
+        prop: widget
+        flexGrow: 1
+        cellTemplateName: checkIcon
+        sortable: true
+      - name: _("Chart")
+        prop: chart
+        flexGrow: 1
+        cellTemplateName: checkIcon
+        sortable: true
+      - name: _("Current")
+        prop: currenttemp
+        flexGrow: 1
+        sortable: true
+      - name: _("Script path")
+        prop: scriptpath
+        flexGrow: 3
+        sortable: true
+      - name: _("Divisor")
+        prop: divisor
+        flexGrow: 1
+        sortable: true
+    actions:
+      - template: create
+        execute:
+          type: url
+          url: "/services/tempmon/create"
+      - template: edit
+        execute:
+          type: url
+          url: "/services/tempmon/edit/{{ _selected[0].uuid }}"
+      - template: delete
+        execute:
+          type: request
+          request:
+            service: TempMon
+            method: deleteSensor
+            params:
+              uuid: "{{ _selected[0].uuid }}"
+      - type: menu
+        icon: mdi:link
+        tooltip: _("Docs")
+        actions:
+          - text: _("omv-extras.org wiki")
+            icon: mdi:link-box-variant-outline
+            execute:
+              type: url
+              url: '/externalRedirect/https%3A%2F%2Fwiki.omv-extras.org%2Fdoku.php%3Fid%3Domv7%3Aomv8_plugins%3Atempmon'

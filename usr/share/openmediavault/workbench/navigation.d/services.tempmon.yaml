@@ -1,0 +1,7 @@
+version: "1.0"
+type: navigation-item
+data:
+  path: "services.tempmon"
+  text: _("Temp Monitor")
+  icon: "mdi:thermometer"
+  url: "/services/tempmon"

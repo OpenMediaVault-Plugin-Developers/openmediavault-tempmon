@@ -1,0 +1,7 @@
+version: "1.0"
+type: route
+data:
+  url: "/services/tempmon/create"
+  title: _("Create")
+  notificationTitle: _("Created sensor.")
+  component: omv-services-tempmon-form-page
