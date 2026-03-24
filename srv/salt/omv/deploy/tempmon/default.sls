@@ -147,3 +147,32 @@ remove_tempmon_rrd_navigation:
 omv_mkworkbench:
   cmd.run:
     - name: "omv-mkworkbench all"
+    - onchanges:
+      - file: purge_stale_tempmon_widget_yaml_files
+{%- for s in widget_sensors %}
+{%- if not s.widgetgroup %}
+      - file: configure_tempmon_widget_yaml_{{ s.uuid }}
+{%- endif %}
+{%- endfor %}
+{%- for group_name, _ in widget_sensors | groupby('widgetgroup') %}
+{%- if group_name %}
+{%- set slug = group_name | replace(' ', '-') | lower %}
+      - file: configure_tempmon_widget_group_{{ slug }}
+{%- endif %}
+{%- endfor %}
+{%- if chart_sensors %}
+      - file: configure_tempmon_rrd_component
+      - file: configure_tempmon_rrd_route
+      - file: configure_tempmon_rrd_navigation
+{%- else %}
+      - file: remove_tempmon_rrd_component
+      - file: remove_tempmon_rrd_route
+      - file: remove_tempmon_rrd_navigation
+{%- endif %}
+
+{% set perfstats = salt['omv_conf.get']('conf.system.monitoring.perfstats') %}
+{% if chart_sensors and perfstats.enable | to_bool %}
+generate_rrd_graphs:
+  cmd.run:
+    - name: /usr/sbin/omv-mkrrdgraph
+{% endif %}

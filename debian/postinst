@@ -13,13 +13,7 @@ case "$1" in
 
         # Deploy collectd and rrdcached configurations on fresh install.
         echo "Deploy collectd and rrdcached configurations ..."
-        omv-salt deploy run --no-color --quiet rrdcached collectd || :
-
-        # generate graphs only if performance monitoring is enabled
-        if [ "$(omv_config_get "/config/system/monitoring/perfstats/enable")" = "1" ]; then
-            echo "Generating graphs ..."
-            omv-mkrrdgraph || :
-        fi
+        omv-salt deploy run --no-color --quiet tempmon rrdcached collectd || :
 
         # Activate package triggers.
         dpkg-trigger update-workbench
