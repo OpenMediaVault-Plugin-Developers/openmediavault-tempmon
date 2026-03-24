@@ -5,6 +5,13 @@ data:
   type: "rrdPage"
   config:
     graphs:
+{%- for group_name, group_sensors in chart_sensors | groupby('widgetgroup') %}
+{%- if group_name and group_sensors | list | length > 1 %}
+{%- set slug = group_name | replace(' ', '-') | lower %}
+      - name: "exec-tempmon-group-{{ slug }}"
+        label: "{{ group_name | replace('"', '\\"') }}"
+{%- endif %}
+{%- endfor %}
 {%- for s in chart_sensors %}
 {%- set uuid8 = (s.uuid | replace('-', ''))[:8] %}
       - name: "exec-tempmon-{{ uuid8 }}"

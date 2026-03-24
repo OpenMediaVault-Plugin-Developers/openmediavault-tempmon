@@ -1,26 +1,37 @@
 version: "1.0"
 type: dashboard-widget
 data:
-  id: {{ sensor.uuid }}
+  id: {{ widget_id }}
   permissions:
     role:
       - admin
       - user
-  title: "{{ sensor.name | replace('"', '\\"') }}"
+  title: "{{ title }}"
   type: chart
   chart:
     type: gauge
     maxHeight: "150px"
     min: 0
     max: 100
+    tooltips: true
+{% if sensors | length == 1 %}
     displayValue: true
-    request:
-      service: TempMon
-      method: getAll
     label:
       formatter: template
       formatterConfig: "{% raw %}{{ value | tofixed(1) }} C{% endraw %}"
+{% else %}
+    displayValue: false
+    legend:
+      display: true
+      position: bottom
+{% endif %}
+    request:
+      service: TempMon
+      method: getAll
     dataConfig:
-      - label: "Temp"
-        prop: "{{ sensor.uuid }}"
-        backgroundColor: "{{ color }}"
+{%- for s in sensors %}
+{%- set color_idx = (s.uuid | replace('-', ''))[:2] | int(0, 16) % (colors | length) %}
+      - label: "{{ s.name | replace('"', '\\"') }}"
+        prop: "{{ s.uuid }}"
+        backgroundColor: "{{ colors[color_idx] }}"
+{%- endfor %}

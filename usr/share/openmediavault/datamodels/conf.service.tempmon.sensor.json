@@ -29,6 +29,10 @@
 			"minimum": 1,
 			"default": 1000
 		},
+		"widgetgroup": {
+			"type": "string",
+			"default": ""
+		},
 		"widget": {
 			"type": "boolean",
 			"default": true

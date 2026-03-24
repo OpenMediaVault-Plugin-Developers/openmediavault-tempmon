@@ -7,4 +7,5 @@ SENSOR_{{ loop.index0 }}_NAME="{{ s.name | replace('"', '\\"') }}"
 SENSOR_{{ loop.index0 }}_SCRIPTPATH="{{ s.scriptpath }}"
 SENSOR_{{ loop.index0 }}_DIVISOR={{ s.divisor }}
 SENSOR_{{ loop.index0 }}_INSTANCE="exec-tempmon-{{ uuid8 }}"
+SENSOR_{{ loop.index0 }}_WIDGETGROUP="{{ s.widgetgroup | replace('"', '\\"') }}"
 {%- endfor %}

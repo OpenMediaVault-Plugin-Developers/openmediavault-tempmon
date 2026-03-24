@@ -15,7 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import os
+import re
 import shlex
+from collections import defaultdict
 
 import openmediavault.mkrrdgraph
 
@@ -53,6 +55,7 @@ def _load_sensors():
             'name':       raw.get(f'{prefix}NAME', f'Sensor {i + 1}'),
             'scriptpath': raw.get(f'{prefix}SCRIPTPATH', ''),
             'instance':   raw.get(f'{prefix}INSTANCE', f'exec-tempmon-{i}'),
+            'widgetgroup': raw.get(f'{prefix}WIDGETGROUP', ''),
         })
     return sensors
 
@@ -99,6 +102,49 @@ class Plugin(openmediavault.mkrrdgraph.IPlugin):
             args.append('COMMENT:"{last_update}"'.format(**config))
             # autopep8: on
             # yapf: enable
+            openmediavault.mkrrdgraph.call_rrdtool_graph(args)
+
+        # Build combined overlay graph for each named group with 2+ sensors
+        groups = defaultdict(list)
+        for sensor in sensors:
+            if sensor['widgetgroup']:
+                groups[sensor['widgetgroup']].append(sensor)
+
+        for group_name, group_sensors in groups.items():
+            if len(group_sensors) < 2:
+                continue
+
+            slug = re.sub(r'[^a-zA-Z0-9-]', '-', group_name).lower()
+            config['instance'] = 'exec-tempmon-group-{}'.format(slug)
+            image_filename = '{image_dir}/{instance}-{period}.png'.format(**config)
+
+            available = [
+                s for s in group_sensors
+                if os.path.exists('{data_dir}/{instance}/temperature-value.rrd'.format(
+                    data_dir=config['data_dir'], instance=s['instance']))
+            ]
+
+            if not available:
+                openmediavault.mkrrdgraph.copy_placeholder_image(image_filename)
+                continue
+
+            args = []
+            args.append(image_filename)
+            args.extend(config['defaults'])
+            args.extend(['--start', config['start']])
+            args.extend(['--title', '"{}{}"'.format(group_name, config['title_by_period'])])
+            args.append('--slope-mode')
+            args.extend(['--lower-limit', '0'])
+            args.extend(['--vertical-label', 'Celsius'])
+            for idx, s in enumerate(available):
+                color = COLORS[idx % len(COLORS)]
+                rrd_file = '{data_dir}/{instance}/temperature-value.rrd'.format(
+                    data_dir=config['data_dir'], instance=s['instance'])
+                args.append('DEF:tavg{}={}:value:AVERAGE'.format(idx, rrd_file))
+                args.append('LINE1:tavg{}{}:"{}"'.format(
+                    idx, color, s['name'].replace('"', '\\"')))
+                args.append('GPRINT:tavg{}:LAST:"%4.1lf C\\l"'.format(idx))
+            args.append('COMMENT:"{last_update}"'.format(**config))
             openmediavault.mkrrdgraph.call_rrdtool_graph(args)
 
         return 0

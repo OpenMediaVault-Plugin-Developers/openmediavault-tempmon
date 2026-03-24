@@ -17,6 +17,10 @@ data:
         prop: name
         flexGrow: 2
         sortable: true
+      - name: _("Group")
+        prop: widgetgroup
+        flexGrow: 1
+        sortable: true
       - name: _("Widget")
         prop: widget
         flexGrow: 1

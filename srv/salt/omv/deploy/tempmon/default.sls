@@ -44,19 +44,40 @@ configure_tempmon_sensor_script_{{ s.uuid }}:
 {% endif %}
 {% endfor %}
 
-# Generate a dashboard widget YAML for each sensor with widget enabled
+# Generate individual gauge widget for each ungrouped widget sensor
 {% for s in widget_sensors %}
-{% set color_idx = (s.uuid | replace('-', ''))[:2] | int(0, 16) % (colors | length) %}
-{% set color = colors[color_idx] %}
+{% if not s.widgetgroup %}
 configure_tempmon_widget_yaml_{{ s.uuid }}:
   file.managed:
     - name: {{ widget_dir }}/tempmon-widget-{{ s.uuid }}.yaml
     - source:
       - salt://{{ tpldir }}/files/dashboard-widget.yaml.j2
     - context:
-        sensor: {{ s | json }}
-        color: "{{ color }}"
+        widget_id: "{{ s.uuid }}"
+        title: "{{ s.name | replace('"', '\\"') }}"
+        sensors: {{ [s] | json }}
+        colors: {{ colors | json }}
     - template: jinja
+{% endif %}
+{% endfor %}
+
+# Generate combined bar chart widget for each named sensor group
+{% for group_name, group_sensors in widget_sensors | groupby('widgetgroup') %}
+{% if group_name %}
+{% set slug = group_name | replace(' ', '-') | lower %}
+{% set group_sensors_list = group_sensors | list %}
+configure_tempmon_widget_group_{{ slug }}:
+  file.managed:
+    - name: {{ widget_dir }}/tempmon-widget-group-{{ slug }}.yaml
+    - source:
+      - salt://{{ tpldir }}/files/dashboard-widget.yaml.j2
+    - context:
+        widget_id: "{{ group_sensors_list[0].uuid }}"
+        title: "{{ group_name | replace('"', '\\"') }}"
+        sensors: {{ group_sensors_list | json }}
+        colors: {{ colors | json }}
+    - template: jinja
+{% endif %}
 {% endfor %}
 
 # Remove stale widget YAML files for sensors that no longer exist or have widget disabled
@@ -68,7 +89,15 @@ purge_stale_tempmon_widget_yaml_files:
 {%- if widget_sensors %}
     - exclude:
 {%- for s in widget_sensors %}
+{%- if not s.widgetgroup %}
       - "tempmon-widget-{{ s.uuid }}.yaml"
+{%- endif %}
+{%- endfor %}
+{%- for group_name, _ in widget_sensors | groupby('widgetgroup') %}
+{%- if group_name %}
+{%- set slug = group_name | replace(' ', '-') | lower %}
+      - "tempmon-widget-group-{{ slug }}.yaml"
+{%- endif %}
 {%- endfor %}
 {%- endif %}
     - rmdirs: False
