@@ -1,3 +1,10 @@
+openmediavault-tempmon (8.0.3) stable; urgency=low
+
+  * Go back to executing temp scripts as nobody since collectd cannot
+    run them as root.  Create a sudo rule and run temp script with sudo
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 24 Mar 2026 13:40:23 +0000
+
 openmediavault-tempmon (8.0.2) stable; urgency=low
 
   * Run collection script as root to support root-required commands
