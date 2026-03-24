@@ -154,10 +154,7 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
     private function callScriptSafe($scriptPath, $divisor)
     {
         try {
-            return number_format(
-                $this->callScript($scriptPath, $divisor),
-                1
-            ) . " °C";
+            return $this->callScript($scriptPath, $divisor) . " °C";
         } catch (\Exception $e) {
             return "-";
         }
