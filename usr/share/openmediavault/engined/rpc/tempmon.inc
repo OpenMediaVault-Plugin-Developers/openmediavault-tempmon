@@ -29,6 +29,7 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
         $this->registerMethod("setSensor");
         $this->registerMethod("deleteSensor");
         $this->registerMethod("getAll");
+        $this->registerMethod("getGroups");
     }
 
     public function getSensorsList($params, $context)
@@ -68,6 +69,12 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, "rpc.tempmon.setsensor");
+        // A manually typed new group name takes precedence over the dropdown selection.
+        $custom = trim($params['widgetgroup_custom'] ?? '');
+        if ($custom !== '') {
+            $params['widgetgroup'] = $custom;
+        }
+        unset($params['widgetgroup_custom']);
         // Prepare the configuration object.
         $object = new \OMV\Config\ConfigObject("conf.service.tempmon.sensor");
         $object->setAssoc($params);
@@ -112,6 +119,23 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
                 );
             } catch (\Exception $e) {
                 $result[$obj['uuid']] = 0;
+            }
+        }
+        return $result;
+    }
+
+    public function getGroups($params, $context)
+    {
+        $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
+        $db = \OMV\Config\Database::getInstance();
+        $objects = $db->getAssoc("conf.service.tempmon.sensor");
+        $seen = [];
+        $result = [];
+        foreach ($objects as $obj) {
+            $g = $obj['widgetgroup'] ?? '';
+            if ($g !== '' && !isset($seen[$g])) {
+                $seen[$g] = true;
+                $result[] = ["value" => $g, "text" => $g];
             }
         }
         return $result;

@@ -45,10 +45,22 @@ data:
         validators:
           required: true
           min: 1
-      - type: textInput
+      - type: select
         name: widgetgroup
         label: _("Group")
-        hint: _("Sensors sharing the same group name are combined into one multi-reading widget and chart. Leave empty for an individual gauge. Use letters, numbers, spaces and hyphens only.")
+        hint: _("Sensors sharing the same group name are combined into one multi-reading widget and chart. Select an existing group, or leave empty and type a new name below.")
+        value: ""
+        hasEmptyOption: true
+        emptyOptionText: _("None (individual gauge)")
+        store:
+          proxy:
+            service: TempMon
+            get:
+              method: getGroups
+      - type: textInput
+        name: widgetgroup_custom
+        label: _("New group name")
+        hint: _("Type a new group name here to create one. Overrides the selection above. Use letters, numbers, spaces and hyphens only.")
         value: ""
         validators:
           pattern:

@@ -27,6 +27,9 @@
 			"widgetgroup": {
 				"type": "string"
 			},
+			"widgetgroup_custom": {
+				"type": "string"
+			},
 			"widget": {
 				"type": "boolean",
 				"required": true
