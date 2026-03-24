@@ -1,3 +1,9 @@
+openmediavault-tempmon (8.0.1) stable; urgency=low
+
+  * Add grouping of sensors
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 24 Mar 2026 01:39:16 +0000
+
 openmediavault-tempmon (8.0) stable; urgency=low
 
   * Initial release
