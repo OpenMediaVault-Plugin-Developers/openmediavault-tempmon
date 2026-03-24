@@ -1,3 +1,9 @@
+openmediavault-tempmon (8.0.2) stable; urgency=low
+
+  * Run collection script as root to support root-required commands
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 24 Mar 2026 11:57:00 +0000
+
 openmediavault-tempmon (8.0.1) stable; urgency=low
 
   * Add grouping of sensors
