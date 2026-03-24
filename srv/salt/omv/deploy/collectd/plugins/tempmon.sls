@@ -19,5 +19,5 @@ configure_collectd_conf_tempmon_plugin:
     - contents: |
         LoadPlugin exec
         <Plugin exec>
-            Exec "nobody" "/usr/share/openmediavault-tempmon/scripts/collectd-tempmon"
+            Exec "root" "/usr/share/openmediavault-tempmon/scripts/collectd-tempmon"
         </Plugin>
