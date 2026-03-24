@@ -148,7 +148,7 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
         }
         $cmd = new \OMV\System\Process($scriptPath);
         $cmd->execute($output, $exitStatus);
-        return intval($output[0]) / $divisor;
+        return round((float)$output[0] / $divisor, 1);
     }
 
     private function callScriptSafe($scriptPath, $divisor)

@@ -44,6 +44,18 @@ configure_tempmon_sensor_script_{{ s.uuid }}:
 {% endif %}
 {% endfor %}
 
+# Grant nobody passwordless sudo for each sensor script so collectd exec can read privileged sensors
+configure_tempmon_sudoers:
+  file.managed:
+    - name: /etc/sudoers.d/openmediavault-tempmon
+    - mode: "0440"
+    - contents: |
+{%- for s in sensors %}
+{%- if s.script and s.scriptpath %}
+        nobody ALL=(root) NOPASSWD: {{ s.scriptpath }}
+{%- endif %}
+{%- endfor %}
+
 # Generate individual gauge widget for each ungrouped widget sensor
 {% for s in widget_sensors %}
 {% if not s.widgetgroup %}
@@ -172,7 +184,7 @@ omv_mkworkbench:
 
 {% set perfstats = salt['omv_conf.get']('conf.system.monitoring.perfstats') %}
 {% if chart_sensors and perfstats.enable | to_bool %}
-generate_rrd_graphs:
+generate_tempmon_rrd_graphs:
   cmd.run:
     - name: /usr/sbin/omv-mkrrdgraph
 {% endif %}

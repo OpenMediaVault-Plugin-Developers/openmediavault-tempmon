@@ -38,7 +38,7 @@ emit_temp() {
     [ -x "$SCRIPT" ] || return
     [ "$DIV" = "0" ] && DIV=1
 
-    TEMP_RAW=$("$SCRIPT" 2>/dev/null | head -1 | tr -d '[:space:]')
+    TEMP_RAW=$(sudo -n "$SCRIPT" 2>/dev/null | head -1 | tr -d '[:space:]')
     if [ -n "$TEMP_RAW" ]; then
         VALUE=$(awk "BEGIN {printf \"%.3f\", $TEMP_RAW / $DIV}" 2>/dev/null)
         if [ -n "$VALUE" ]; then
