@@ -1,2 +1,2 @@
-openmediavault-cputemp
+openmediavault-tempmon
 ======================
