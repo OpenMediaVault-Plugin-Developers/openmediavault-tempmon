@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the openmediavault-tempmon package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-tempmon\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-24 12:02+0000\n"
+"PO-Revision-Date: 2026-03-24 12:05+0000\n"
+"Language-Team: Bulgarian (https://app.transifex.com/openmediavault-plugin-developers/teams/1854/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Chart"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Created sensor."
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Dashboard widget"
+msgstr ""
+
+msgid ""
+"Divide raw output by this value to get degrees Celsius. Use 1000 for "
+"millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius."
+msgstr ""
+
+msgid "Divisor"
+msgstr ""
+
+msgid "Docs"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Include in the performance statistics page."
+msgstr ""
+
+msgid "Label shown on the dashboard widget and performance chart."
+msgstr ""
+
+msgid ""
+"Must output a raw numeric value. Divide by the divisor below to get degrees "
+"Celsius."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "New group name"
+msgstr ""
+
+msgid "None (individual gauge)"
+msgstr ""
+
+msgid "Only letters, numbers, spaces and hyphens are allowed."
+msgstr ""
+
+msgid ""
+"Path where the temperature script will be written. Example - "
+"/usr/sbin/cputemp1"
+msgstr ""
+
+msgid "Performance chart"
+msgstr ""
+
+msgid "Script"
+msgstr ""
+
+msgid "Script path"
+msgstr ""
+
+msgid ""
+"Sensors sharing the same group name are combined into one multi-reading "
+"widget and chart. Select an existing group, or leave empty and type a new "
+"name below."
+msgstr ""
+
+msgid ""
+"Show a gauge widget on the dashboard (ungrouped) or include in the group's "
+"combined widget."
+msgstr ""
+
+msgid "Temp Monitor"
+msgstr ""
+
+msgid ""
+"Type a new group name here to create one. Overrides the selection above. Use"
+" letters, numbers, spaces and hyphens only."
+msgstr ""
+
+msgid "Updated sensor."
+msgstr ""
+
+msgid "Widget"
+msgstr ""
+
+msgid "omv-extras.org wiki"
+msgstr ""
