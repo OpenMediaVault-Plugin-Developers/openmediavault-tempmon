@@ -50,6 +50,7 @@ configure_tempmon_sudoers:
     - name: /etc/sudoers.d/openmediavault-tempmon
     - mode: "0440"
     - contents: |
+        Defaults:nobody !syslog, !pam_session
 {%- for s in sensors %}
 {%- if s.script and s.scriptpath %}
         nobody ALL=(root) NOPASSWD: {{ s.scriptpath }}
