@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the openmediavault-tempmon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# kochin <kochinc@outlook.com>, 2026
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,6 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 12:02+0000\n"
 "PO-Revision-Date: 2026-03-24 12:05+0000\n"
+"Last-Translator: kochin <kochinc@outlook.com>, 2026\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/openmediavault-plugin-developers/teams/1854/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,98 +22,100 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Chart"
-msgstr ""
+msgstr "圖表"
 
 msgid "Create"
-msgstr ""
+msgstr "創建"
 
 msgid "Created sensor."
-msgstr ""
+msgstr "已建立感測器。"
 
 msgid "Current"
-msgstr ""
+msgstr "現值"
 
 msgid "Dashboard widget"
-msgstr ""
+msgstr "儀表板小工具"
 
 msgid ""
 "Divide raw output by this value to get degrees Celsius. Use 1000 for "
 "millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius."
 msgstr ""
+"將原始輸出值除以這個數值來得到攝氏度數。若輸出值為攝氏毫度，則使用 1000 (例如：thermal_zone)，若腳本程式輸出值已經是攝氏，則使用 "
+"1。"
 
 msgid "Divisor"
-msgstr ""
+msgstr "除數"
 
 msgid "Docs"
-msgstr ""
+msgstr "說明文件"
 
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 msgid "Group"
-msgstr ""
+msgstr "群組"
 
 msgid "Include in the performance statistics page."
-msgstr ""
+msgstr "包括入效能統計頁。"
 
 msgid "Label shown on the dashboard widget and performance chart."
-msgstr ""
+msgstr "顯示於儀表板小工具和效能圖表上的標記。"
 
 msgid ""
 "Must output a raw numeric value. Divide by the divisor below to get degrees "
 "Celsius."
-msgstr ""
+msgstr "必須輸出一個原始數值。除以下面的除數來得到攝氏度數。"
 
 msgid "Name"
-msgstr ""
+msgstr "名稱"
 
 msgid "New group name"
-msgstr ""
+msgstr "新群組名稱"
 
 msgid "None (individual gauge)"
-msgstr ""
+msgstr "無 (獨立量測)"
 
 msgid "Only letters, numbers, spaces and hyphens are allowed."
-msgstr ""
+msgstr "只允許字母、數字、空格及連字符。"
 
 msgid ""
 "Path where the temperature script will be written. Example - "
 "/usr/sbin/cputemp1"
-msgstr ""
+msgstr "此溫度腳本程式將被寫進的路徑。例如：/usr/sbin/cputemp1"
 
 msgid "Performance chart"
-msgstr ""
+msgstr "效能圖表"
 
 msgid "Script"
-msgstr ""
+msgstr "腳本程式"
 
 msgid "Script path"
-msgstr ""
+msgstr "腳本程式路徑"
 
 msgid ""
 "Sensors sharing the same group name are combined into one multi-reading "
 "widget and chart. Select an existing group, or leave empty and type a new "
 "name below."
-msgstr ""
+msgstr "有相同群組名稱之感測器會被合併到一項含多個讀數的小工具和圖表。選擇一個現存群組，或留空並在下面鍵入一個新名稱。"
 
 msgid ""
 "Show a gauge widget on the dashboard (ungrouped) or include in the group's "
 "combined widget."
-msgstr ""
+msgstr "於儀表板上顯示一個量測小工具（無群組）或包含在該群組的合併小工具內。"
 
 msgid "Temp Monitor"
-msgstr ""
+msgstr "溫度監測"
 
 msgid ""
 "Type a new group name here to create one. Overrides the selection above. Use"
 " letters, numbers, spaces and hyphens only."
-msgstr ""
+msgstr "鍵入一個新群組名稱來建立群組。會覆蓋掉前一項的選擇。只能使用字母、數字、空格及連字符。"
 
 msgid "Updated sensor."
-msgstr ""
+msgstr "已更新感測器。"
 
 msgid "Widget"
-msgstr ""
+msgstr "小工具"
 
 msgid "omv-extras.org wiki"
-msgstr ""
+msgstr "omv-extras.org 維基"

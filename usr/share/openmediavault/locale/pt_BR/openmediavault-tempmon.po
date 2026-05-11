@@ -3,6 +3,10 @@
 # This file is distributed under the same license as the openmediavault-tempmon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jeann Cavalcante <wjeann@gmail.com>, 2026
+# Marcelo Esteves <marcelopge@gmail.com>, 2026
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,6 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 12:02+0000\n"
 "PO-Revision-Date: 2026-03-24 12:05+0000\n"
+"Last-Translator: Marcelo Esteves <marcelopge@gmail.com>, 2026\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/openmediavault-plugin-developers/teams/1854/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,98 +23,112 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "Chart"
-msgstr ""
+msgstr "Gráfico"
 
 msgid "Create"
-msgstr ""
+msgstr "Criar"
 
 msgid "Created sensor."
-msgstr ""
+msgstr "Sensor criado."
 
 msgid "Current"
-msgstr ""
+msgstr "Atual"
 
 msgid "Dashboard widget"
-msgstr ""
+msgstr "Widget do painel"
 
 msgid ""
 "Divide raw output by this value to get degrees Celsius. Use 1000 for "
 "millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius."
 msgstr ""
+"Divida o valor bruto por este valor para obter graus Celsius. Utilize 1000 "
+"para milidegraus (ex. thermal_zone) ou 1 se o script já apresentar os "
+"resultados em graus Celsius."
 
 msgid "Divisor"
-msgstr ""
+msgstr "Divisor"
 
 msgid "Docs"
-msgstr ""
+msgstr "Documentos"
 
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 msgid "Include in the performance statistics page."
-msgstr ""
+msgstr "Incluir na página de estatísticas de desempenho."
 
 msgid "Label shown on the dashboard widget and performance chart."
-msgstr ""
+msgstr "Rótulo apresentado no widget do painel e no gráfico de desempenho."
 
 msgid ""
 "Must output a raw numeric value. Divide by the divisor below to get degrees "
 "Celsius."
 msgstr ""
+"Deve apresentar um valor numérico bruto. Divida pelo divisor abaixo para "
+"obter os graus Celsius."
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "New group name"
-msgstr ""
+msgstr "Novo nome do grupo"
 
 msgid "None (individual gauge)"
-msgstr ""
+msgstr "Nenhum (medidor individual)"
 
 msgid "Only letters, numbers, spaces and hyphens are allowed."
-msgstr ""
+msgstr "Só são permitidas letras, números, espaços e hífens."
 
 msgid ""
 "Path where the temperature script will be written. Example - "
 "/usr/sbin/cputemp1"
 msgstr ""
+"Caminho onde o script de temperatura será gravado. Exemplo: "
+"/usr/sbin/cputemp1"
 
 msgid "Performance chart"
-msgstr ""
+msgstr "Gráfico de desempenho"
 
 msgid "Script"
-msgstr ""
+msgstr "Script"
 
 msgid "Script path"
-msgstr ""
+msgstr "Caminho do script"
 
 msgid ""
 "Sensors sharing the same group name are combined into one multi-reading "
 "widget and chart. Select an existing group, or leave empty and type a new "
 "name below."
 msgstr ""
+"Os sensores que partilham o mesmo nome de grupo são agrupados num único "
+"widget e gráfico com várias leituras. Selecione um grupo existente ou deixe "
+"em branco e introduza um novo nome abaixo."
 
 msgid ""
 "Show a gauge widget on the dashboard (ungrouped) or include in the group's "
 "combined widget."
 msgstr ""
+"Mostrar um widget de medidor no painel (não agrupado) ou incluí-lo no widget"
+" combinado do grupo."
 
 msgid "Temp Monitor"
-msgstr ""
+msgstr "Monitor de temperatura"
 
 msgid ""
 "Type a new group name here to create one. Overrides the selection above. Use"
 " letters, numbers, spaces and hyphens only."
 msgstr ""
+"Digite aqui o nome de um novo grupo para o criar. Substitui a seleção acima."
+" Utilize apenas letras, números, espaços e hífens."
 
 msgid "Updated sensor."
-msgstr ""
+msgstr "Sensor atualizado."
 
 msgid "Widget"
-msgstr ""
+msgstr "Widget"
 
 msgid "omv-extras.org wiki"
-msgstr ""
+msgstr "Wiki do omv-extras.org"

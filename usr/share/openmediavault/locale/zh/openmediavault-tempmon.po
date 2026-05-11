@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the openmediavault-tempmon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# irrelevant91, 2026
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,6 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 12:02+0000\n"
 "PO-Revision-Date: 2026-03-24 12:05+0000\n"
+"Last-Translator: irrelevant91, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/openmediavault-plugin-developers/teams/1854/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,98 +22,99 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Chart"
-msgstr ""
+msgstr "图表"
 
 msgid "Create"
-msgstr ""
+msgstr "创建"
 
 msgid "Created sensor."
-msgstr ""
+msgstr "传感器已创建。"
 
 msgid "Current"
-msgstr ""
+msgstr "当前"
 
 msgid "Dashboard widget"
-msgstr ""
+msgstr "仪表盘组件"
 
 msgid ""
 "Divide raw output by this value to get degrees Celsius. Use 1000 for "
 "millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius."
 msgstr ""
+"将原始输出除以此值以得到摄氏度值。若输出值单位为千分之一摄氏度（如 thermal_zone），则设置为1000。若脚本原本就输出摄氏度，则设置为1。"
 
 msgid "Divisor"
-msgstr ""
+msgstr "除数"
 
 msgid "Docs"
-msgstr ""
+msgstr "文档"
 
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 msgid "Group"
-msgstr ""
+msgstr "组"
 
 msgid "Include in the performance statistics page."
-msgstr ""
+msgstr "在性能统计页中包括。"
 
 msgid "Label shown on the dashboard widget and performance chart."
-msgstr ""
+msgstr "在仪表盘组件和性能统计图表中显示的标签。"
 
 msgid ""
 "Must output a raw numeric value. Divide by the divisor below to get degrees "
 "Celsius."
-msgstr ""
+msgstr "需输出一个原始数值。除以除数以得到摄氏度值。"
 
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 msgid "New group name"
-msgstr ""
+msgstr "新组名"
 
 msgid "None (individual gauge)"
-msgstr ""
+msgstr "无（单独的标尺）"
 
 msgid "Only letters, numbers, spaces and hyphens are allowed."
-msgstr ""
+msgstr "仅允许字母、数字、空格与连字符。"
 
 msgid ""
 "Path where the temperature script will be written. Example - "
 "/usr/sbin/cputemp1"
-msgstr ""
+msgstr "写入温度脚本的路径，如 /usr/sbin/cputemp1"
 
 msgid "Performance chart"
-msgstr ""
+msgstr "性能图表"
 
 msgid "Script"
-msgstr ""
+msgstr "脚本"
 
 msgid "Script path"
-msgstr ""
+msgstr "脚本路径"
 
 msgid ""
 "Sensors sharing the same group name are combined into one multi-reading "
 "widget and chart. Select an existing group, or leave empty and type a new "
 "name below."
-msgstr ""
+msgstr "共享同一组名的传感器会被合并到同一个有多个读数的组件和图表中。选择一个已存在的组，或留空并在下方输入一个新名称。"
 
 msgid ""
 "Show a gauge widget on the dashboard (ungrouped) or include in the group's "
 "combined widget."
-msgstr ""
+msgstr "在仪表盘中显示一个标尺组件（不组合）或包括于该组的合并组件中。"
 
 msgid "Temp Monitor"
-msgstr ""
+msgstr "温度监测"
 
 msgid ""
 "Type a new group name here to create one. Overrides the selection above. Use"
 " letters, numbers, spaces and hyphens only."
-msgstr ""
+msgstr "在此处键入新组名以创建新组。此设置会覆盖上方的选择。仅可使用字母、数字、空格与连字符。"
 
 msgid "Updated sensor."
-msgstr ""
+msgstr "传感器已更新。"
 
 msgid "Widget"
-msgstr ""
+msgstr "组件"
 
 msgid "omv-extras.org wiki"
-msgstr ""
+msgstr "omv-extras.org wiki"

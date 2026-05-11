@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the openmediavault-tempmon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# BoneNI, 2026
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,6 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 12:02+0000\n"
 "PO-Revision-Date: 2026-03-24 12:05+0000\n"
+"Last-Translator: BoneNI, 2026\n"
 "Language-Team: Lao (Laos) (https://app.transifex.com/openmediavault-plugin-developers/teams/1854/lo_LA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,98 +22,110 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Chart"
-msgstr ""
+msgstr "ແຜນພູມ"
 
 msgid "Create"
-msgstr ""
+msgstr "ສ້າງ"
 
 msgid "Created sensor."
-msgstr ""
+msgstr "ສ້າງເຊັນເຊີແລ້ວ."
 
 msgid "Current"
-msgstr ""
+msgstr "ປັດຈຸບັນ"
 
 msgid "Dashboard widget"
-msgstr ""
+msgstr "ວິດເຈັດໜ້າຄວບຄຸມ"
 
 msgid ""
 "Divide raw output by this value to get degrees Celsius. Use 1000 for "
 "millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius."
 msgstr ""
+"ຫານຄ່າທີ່ໄດ້ຮັບດ້ວຍຄ່ານີ້ເພື່ອໃຫ້ໄດ້ອົງສາເຊວຊຽດ. ໃຊ້ 1000 ສຳລັບມິນລິອົງສາ "
+"(ຕົວຢ່າງ: thermal_zone), ຫຼື ໃຊ້ 1 ຖ້າສະຄຣິບສົ່ງຄ່າເປັນອົງສາເຊວຊຽດຢູ່ແລ້ວ."
 
 msgid "Divisor"
-msgstr ""
+msgstr "ຕົວຫານ"
 
 msgid "Docs"
-msgstr ""
+msgstr "ເອກະສານ"
 
 msgid "Edit"
-msgstr ""
+msgstr "ແກ້ໄຂ"
 
 msgid "Group"
-msgstr ""
+msgstr "ກຸ່ມ"
 
 msgid "Include in the performance statistics page."
-msgstr ""
+msgstr "ລວມໄວ້ໃນໜ້າສະຖິຕິປະສິດທິພາບ."
 
 msgid "Label shown on the dashboard widget and performance chart."
-msgstr ""
+msgstr "ປ້າຍຊື່ທີ່ຈະສະແດງໃນວິດເຈັດໜ້າຄວບຄຸມ ແລະ ແຜນພູມປະສິດທິພາບ."
 
 msgid ""
 "Must output a raw numeric value. Divide by the divisor below to get degrees "
 "Celsius."
 msgstr ""
+"ຕ້ອງສົ່ງຄ່າອອກມາເປັນຕົວເລກເທົ່ານັ້ນ. "
+"ຫານດ້ວຍຕົວຫານຂ້າງລຸ່ມເພື່ອໃຫ້ໄດ້ອົງສາເຊວຊຽດ."
 
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgid "New group name"
-msgstr ""
+msgstr "ຊື່ກຸ່ມໃໝ່"
 
 msgid "None (individual gauge)"
-msgstr ""
+msgstr "ບໍ່ມີ (ແຍກມາດວັດດ່ຽວ)"
 
 msgid "Only letters, numbers, spaces and hyphens are allowed."
 msgstr ""
+"ອະນຸຍາດໃຫ້ໃຊ້ສະເພາະ ຕົວອັກສອນ, ຕົວເລກ, ຍະຫວ່າງ ແລະ ເຄື່ອງໝາຍຂີດຕໍ່ (-) "
+"ເທົ່ານັ້ນ."
 
 msgid ""
 "Path where the temperature script will be written. Example - "
 "/usr/sbin/cputemp1"
-msgstr ""
+msgstr "ເສັ້ນທາງທີ່ຈະຂຽນສະຄຣິບອຸນຫະພູມໄວ້. ຕົວຢ່າງ - /usr/sbin/cputemp1"
 
 msgid "Performance chart"
-msgstr ""
+msgstr "ແຜນພູມປະສິດທິພາບ"
 
 msgid "Script"
-msgstr ""
+msgstr "ສະຄຣິບ"
 
 msgid "Script path"
-msgstr ""
+msgstr "ເສັ້ນທາງສະຄຣິບ"
 
 msgid ""
 "Sensors sharing the same group name are combined into one multi-reading "
 "widget and chart. Select an existing group, or leave empty and type a new "
 "name below."
 msgstr ""
+"ເຊັນເຊີທີ່ໃຊ້ຊື່ກຸ່ມດຽວກັນຈະຖືກລວມເຂົ້າເປັນວິດເຈັດ ແລະ ແຜນພູມອັນດຽວກັນ. "
+"ເລືອກກຸ່ມທີ່ມີຢູ່ແລ້ວ, ຫຼື ປະຫວ່າງໄວ້ແລ້ວພິມຊື່ໃໝ່ໃສ່ຂ້າງລຸ່ມ."
 
 msgid ""
 "Show a gauge widget on the dashboard (ungrouped) or include in the group's "
 "combined widget."
 msgstr ""
+"ສະແດງວິດເຈັດແບບມາດວັດໃນໜ້າຄວບຄຸມ (ແບບບໍ່ລວມກຸ່ມ) ຫຼື "
+"ລວມເຂົ້າໃນວິດເຈັດລວມຂອງກຸ່ມ."
 
 msgid "Temp Monitor"
-msgstr ""
+msgstr "ຕິດຕາມອຸນຫະພູມ"
 
 msgid ""
 "Type a new group name here to create one. Overrides the selection above. Use"
 " letters, numbers, spaces and hyphens only."
 msgstr ""
+"ພິມຊື່ກຸ່ມໃໝ່ທີ່ນີ້ເພື່ອສ້າງ. ຈະແທນທີ່ການເລືອກຂ້າງເທິງ. ໃຊ້ສະເພາະ ຕົວອັກສອນ,"
+" ຕົວເລກ, ຍະຫວ່າງ ແລະ ເຄື່ອງໝາຍຂີດຕໍ່ ເທົ່ານັ້ນ."
 
 msgid "Updated sensor."
-msgstr ""
+msgstr "ອັບເດດເຊັນເຊີແລ້ວ."
 
 msgid "Widget"
-msgstr ""
+msgstr "ວິດເຈັດ"
 
 msgid "omv-extras.org wiki"
-msgstr ""
+msgstr "omv-extras.org wiki"
