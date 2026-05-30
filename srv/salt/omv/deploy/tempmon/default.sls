@@ -40,7 +40,7 @@ configure_tempmon_sensor_script_{{ s.uuid }}:
     - name: {{ s.scriptpath }}
     - contents: |
         {{ s.script | indent(8) }}
-    - mode: "0755"
+    - mode: '0755'
 {% endif %}
 {% endfor %}
 
@@ -48,7 +48,7 @@ configure_tempmon_sensor_script_{{ s.uuid }}:
 configure_tempmon_sudoers:
   file.managed:
     - name: /etc/sudoers.d/openmediavault-tempmon
-    - mode: "0440"
+    - mode: '0440'
     - contents: |
         Defaults:nobody !syslog, !pam_session
 {%- for s in sensors %}
