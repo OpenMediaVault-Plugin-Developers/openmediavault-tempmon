@@ -58,3 +58,4 @@ debian/*.debhelper.log
 debian/*.debhelper
 debian/*substvars
 debian/debhelper-build-stamp
+.claude/
