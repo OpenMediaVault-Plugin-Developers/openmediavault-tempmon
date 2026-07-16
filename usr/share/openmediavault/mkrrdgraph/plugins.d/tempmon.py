@@ -28,6 +28,28 @@ COLORS = [
     '#ff1300', '#9b59b6', '#e67e22', '#1abc9c',
 ]
 
+UNIT_LABELS = {
+    'C': '°C',
+    'F': '°F',
+    'RPM': 'RPM',
+    'V': 'V',
+}
+
+VALUE_LABELS = {
+    'C': 'Temperature',
+    'F': 'Temperature',
+    'RPM': 'Speed',
+    'V': 'Voltage',
+}
+
+
+def _unit_label(unit):
+    return UNIT_LABELS.get(unit, '°C')
+
+
+def _value_label(unit):
+    return VALUE_LABELS.get(unit, 'Value')
+
 
 def _load_sensors():
     """Parse /etc/openmediavault/tempmon.conf and return list of sensor dicts."""
@@ -56,6 +78,7 @@ def _load_sensors():
             'scriptpath': raw.get(f'{prefix}SCRIPTPATH', ''),
             'instance':   raw.get(f'{prefix}INSTANCE', f'exec-tempmon-{i}'),
             'widgetgroup': raw.get(f'{prefix}WIDGETGROUP', ''),
+            'unit':       raw.get(f'{prefix}UNIT', 'C'),
         })
     return sensors
 
@@ -68,6 +91,7 @@ class Plugin(openmediavault.mkrrdgraph.IPlugin):
             color = COLORS[idx % len(COLORS)]
             instance = sensor['instance']
             title = sensor['name']
+            unit = _unit_label(sensor['unit'])
 
             config['instance'] = instance
             config['title_tempmon'] = title
@@ -90,15 +114,15 @@ class Plugin(openmediavault.mkrrdgraph.IPlugin):
             args.extend(['--title', '"{title_tempmon}{title_by_period}"'.format(**config)])
             args.append('--slope-mode')
             args.extend(['--lower-limit', '0'])
-            args.extend(['--vertical-label', 'Celsius'])
+            args.extend(['--vertical-label', unit])
             args.append('DEF:tavg={data_dir}/{instance}/temperature-value.rrd:value:AVERAGE'.format(**config))
             args.append('DEF:tmin={data_dir}/{instance}/temperature-value.rrd:value:MIN'.format(**config))
             args.append('DEF:tmax={data_dir}/{instance}/temperature-value.rrd:value:MAX'.format(**config))
-            args.append('LINE1:tavg{color_tempmon}:"Temperature"'.format(**config))
-            args.append('GPRINT:tmin:MIN:"%4.1lf C Min"')
-            args.append('GPRINT:tavg:AVERAGE:"%4.1lf C Avg"')
-            args.append('GPRINT:tmax:MAX:"%4.1lf C Max"')
-            args.append('GPRINT:tavg:LAST:"%4.1lf C Last\\l"')
+            args.append('LINE1:tavg{}:"{}"'.format(color, _value_label(sensor['unit'])))
+            args.append('GPRINT:tmin:MIN:"%4.1lf {} Min"'.format(unit))
+            args.append('GPRINT:tavg:AVERAGE:"%4.1lf {} Avg"'.format(unit))
+            args.append('GPRINT:tmax:MAX:"%4.1lf {} Max"'.format(unit))
+            args.append('GPRINT:tavg:LAST:"%4.1lf {} Last\\l"'.format(unit))
             args.append('COMMENT:"{last_update}"'.format(**config))
             # autopep8: on
             # yapf: enable
@@ -135,7 +159,7 @@ class Plugin(openmediavault.mkrrdgraph.IPlugin):
             args.extend(['--title', '"{}{}"'.format(group_name, config['title_by_period'])])
             args.append('--slope-mode')
             args.extend(['--lower-limit', '0'])
-            args.extend(['--vertical-label', 'Celsius'])
+            args.extend(['--vertical-label', _unit_label(available[0]['unit'])])
             for idx, s in enumerate(available):
                 color = COLORS[idx % len(COLORS)]
                 rrd_file = '{data_dir}/{instance}/temperature-value.rrd'.format(
@@ -143,7 +167,7 @@ class Plugin(openmediavault.mkrrdgraph.IPlugin):
                 args.append('DEF:tavg{}={}:value:AVERAGE'.format(idx, rrd_file))
                 args.append('LINE1:tavg{}{}:"{}"'.format(
                     idx, color, s['name'].replace('"', '\\"')))
-                args.append('GPRINT:tavg{}:LAST:"%4.1lf C\\l"'.format(idx))
+                args.append('GPRINT:tavg{}:LAST:"%4.1lf {}\\l"'.format(idx, _unit_label(s['unit'])))
             args.append('COMMENT:"{last_update}"'.format(**config))
             openmediavault.mkrrdgraph.call_rrdtool_graph(args)
 

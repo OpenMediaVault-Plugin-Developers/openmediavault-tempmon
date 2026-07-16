@@ -1,3 +1,4 @@
+{%- set unit_labels = {'C': '°C', 'F': '°F', 'RPM': 'RPM', 'V': 'V'} %}
 version: "1.0"
 type: dashboard-widget
 data:
@@ -18,7 +19,7 @@ data:
     displayValue: true
     label:
       formatter: template
-      formatterConfig: "{% raw %}{{ value | tofixed(1) }} C{% endraw %}"
+      formatterConfig: "{% raw %}{{ value | tofixed(1) }}{% endraw %} {{ unit_labels.get(sensors[0].unit | default('C'), sensors[0].unit | default('C')) }}"
 {% else %}
     displayValue: false
     legend:

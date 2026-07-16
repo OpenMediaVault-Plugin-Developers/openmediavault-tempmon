@@ -29,6 +29,11 @@
 			"minimum": 1,
 			"default": 1000
 		},
+		"unit": {
+			"type": "string",
+			"enum": ["C", "F", "RPM", "V"],
+			"default": "C"
+		},
 		"widgetgroup": {
 			"type": "string",
 			"default": ""

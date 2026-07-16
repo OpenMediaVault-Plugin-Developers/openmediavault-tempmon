@@ -7,9 +7,13 @@ set -e
 
 case "$1" in
     configure)
-        # Initialize configuration database first so salt can read settings.
+        # Initialize and migrate configuration database first so salt can
+        # read settings.
         echo "Updating configuration database ..."
         omv-confdbadm create "conf.service.tempmon"
+        if [ -n "$2" ]; then
+            omv-confdbadm migrate "conf.service.tempmon" "${2}"
+        fi
 
         # Deploy collectd and rrdcached configurations on fresh install.
         echo "Deploy collectd and rrdcached configurations ..."

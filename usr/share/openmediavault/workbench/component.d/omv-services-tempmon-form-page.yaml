@@ -32,7 +32,7 @@ data:
       - type: codeEditor
         name: script
         label: _("Script")
-        hint: _("Must output a raw numeric value. Divide by the divisor below to get degrees Celsius.")
+        hint: _("Must output a raw numeric value. Divide by the divisor below to convert it to the selected unit.")
         value: ""
         language: shell
         validators:
@@ -40,11 +40,24 @@ data:
       - type: numberInput
         name: divisor
         label: _("Divisor")
-        hint: _("Divide raw output by this value to get degrees Celsius. Use 1000 for millidegrees (e.g. thermal_zone), 1 if the script already outputs Celsius.")
+        hint: _("Divide raw output by this value to get the selected unit. Use 1000 for millidegrees (e.g. thermal_zone), 1 if the script already outputs the final value.")
         value: 1000
         validators:
           required: true
           min: 1
+      - type: select
+        name: unit
+        label: _("Unit")
+        hint: _("Unit the converted value is measured in. Shown next to the reading on the dashboard, sensor list and performance chart.")
+        value: "C"
+        store:
+          data:
+            - ["C", _("Celsius (°C)")]
+            - ["F", _("Fahrenheit (°F)")]
+            - ["RPM", _("RPM")]
+            - ["V", _("Volts (V)")]
+        validators:
+          required: true
       - type: select
         name: widgetgroup
         label: _("Group")

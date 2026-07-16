@@ -43,6 +43,10 @@ data:
         prop: divisor
         flexGrow: 1
         sortable: true
+      - name: _("Unit")
+        prop: unit
+        flexGrow: 1
+        sortable: true
     actions:
       - template: create
         execute:

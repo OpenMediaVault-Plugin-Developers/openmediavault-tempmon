@@ -44,7 +44,8 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
         foreach ($objects as &$obj) {
             $obj['currenttemp'] = $this->callScriptSafe(
                 $obj['scriptpath'],
-                $obj['divisor']
+                $obj['divisor'],
+                $obj['unit']
             );
         }
         // Filter the result.
@@ -151,12 +152,23 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
         return round((float)$output[0] / $divisor, 1);
     }
 
-    private function callScriptSafe($scriptPath, $divisor)
+    private function callScriptSafe($scriptPath, $divisor, $unit)
     {
         try {
-            return $this->callScript($scriptPath, $divisor) . " °C";
+            return $this->callScript($scriptPath, $divisor) . " " . $this->unitLabel($unit);
         } catch (\Exception $e) {
             return "-";
         }
+    }
+
+    private function unitLabel($unit)
+    {
+        $labels = [
+            "C" => "°C",
+            "F" => "°F",
+            "RPM" => "RPM",
+            "V" => "V",
+        ];
+        return $labels[$unit] ?? "°C";
     }
 }

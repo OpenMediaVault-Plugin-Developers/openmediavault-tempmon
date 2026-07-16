@@ -24,6 +24,11 @@
 				"minimum": 1,
 				"required": true
 			},
+			"unit": {
+				"type": "string",
+				"enum": ["C", "F", "RPM", "V"],
+				"required": true
+			},
 			"widgetgroup": {
 				"type": "string"
 			},

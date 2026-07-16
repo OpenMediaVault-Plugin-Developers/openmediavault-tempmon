@@ -1,3 +1,10 @@
+openmediavault-tempmon (8.0.5) stable; urgency=low
+
+  * Add per-sensor unit selector (Celsius, Fahrenheit, RPM, Volts) shown
+    on the dashboard widget, sensor list and performance chart
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 16 Jul 2026 15:45:21 +0000
+
 openmediavault-tempmon (8.0.4) stable; urgency=low
 
   * Prevent syslog logging
