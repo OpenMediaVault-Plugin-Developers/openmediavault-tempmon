@@ -56,6 +56,8 @@ data:
             - ["F", _("Fahrenheit (°F)")]
             - ["RPM", _("RPM")]
             - ["V", _("Volts (V)")]
+            - ["mV", _("Millivolts (mV)")]
+            - ["%", _("Percent (%)")]
         validators:
           required: true
       - type: select

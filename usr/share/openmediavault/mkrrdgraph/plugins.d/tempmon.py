@@ -33,6 +33,8 @@ UNIT_LABELS = {
     'F': '°F',
     'RPM': 'RPM',
     'V': 'V',
+    'mV': 'mV',
+    '%': '%',
 }
 
 VALUE_LABELS = {
@@ -40,6 +42,8 @@ VALUE_LABELS = {
     'F': 'Temperature',
     'RPM': 'Speed',
     'V': 'Voltage',
+    'mV': 'Voltage',
+    '%': 'Value',
 }
 
 

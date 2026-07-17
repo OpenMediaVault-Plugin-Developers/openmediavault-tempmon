@@ -168,6 +168,8 @@ class OMVRpcServiceTempMon extends \OMV\Rpc\ServiceAbstract
             "F" => "°F",
             "RPM" => "RPM",
             "V" => "V",
+            "mV" => "mV",
+            "%" => "%",
         ];
         return $labels[$unit] ?? "°C";
     }

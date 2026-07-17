@@ -31,7 +31,7 @@
 		},
 		"unit": {
 			"type": "string",
-			"enum": ["C", "F", "RPM", "V"],
+			"enum": ["C", "F", "RPM", "V", "mV", "%"],
 			"default": "C"
 		},
 		"widgetgroup": {
